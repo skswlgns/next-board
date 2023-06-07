@@ -1,5 +1,6 @@
 import { connectDB } from "@/utils/database";
 import { ObjectId } from "mongodb";
+import Link from "next/link";
 
 export default async function Detail(props) {
   const client = await connectDB;
@@ -12,6 +13,9 @@ export default async function Detail(props) {
     <div>
       <h4>{result.title}</h4>
       <p>{result.content}</p>
+      <Link href={`/modify/${result._id}`}>
+        <button>수정</button>
+      </Link>
     </div>
   );
 }
