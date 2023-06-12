@@ -1,10 +1,11 @@
 export default function Write() {
-  const content = "ss";
   return (
     <div>
-      <form>
-        <input name="content"></input>
-        <button onClick={""}>제출</button>
+      <form action="api/createBoard" method="POST">
+        제목: <input name="title" />
+        {"  "}
+        내용: <input name="content" />
+        <button>제출</button>
       </form>
     </div>
   );

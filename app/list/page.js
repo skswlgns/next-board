@@ -1,23 +1,20 @@
 import { connectDB } from "@/utils/database";
 import Link from "next/link";
+import ListItem from "./ListItem";
 
 export default async function List() {
   const client = await connectDB;
   const db = client.db("next-master");
-  const result = await db.collection("post").find().toArray();
+  let result = await db.collection("post").find().toArray();
+
+  result = result.map((item) => {
+    item._id = item._id.toString();
+    return item;
+  });
 
   return (
     <div className="list-bg">
-      {result.map((item, index) => {
-        return (
-          <div className="list-item" key={index}>
-            <Link prefetch={false} href={`/detail/${item._id}`}>
-              {item.title}
-            </Link>
-            <p>{item.content}</p>
-          </div>
-        );
-      })}
+      <ListItem result={result} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { connectDB } from "@/utils/database";
 
 export default async function handler(req, rep) {
-  console.log(req.body);
   const client = await connectDB;
   const db = client.db("next-master");
 

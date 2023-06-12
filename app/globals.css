@@ -18,3 +18,14 @@
   color: grey;
   margin: 5px 0px;
 }
+
+.list-item a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.list-item {
+  opacity: 1;
+  transition: all 1s;
+}
